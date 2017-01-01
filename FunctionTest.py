@@ -31,3 +31,21 @@ def store(data, full_name):
         else:
             data[label][name] = [full_name]#保证存储的是数组
             
+#如果要求原地修改，那么就使用列表方式：
+def inc1(num):
+    return num + 1
+
+def inc2(num): num[0] = num[0] + 1
+
+tt = [10]
+print(inc1(10))#有返回值自加1
+print(inc2(tt))#此时没有返回值
+print(tt)#修改了列表
+#位置参数 与 关键字参数
+def printTest(a,b,c=2, *poss,**keys):#**收集关键字参数，*收集位置参数
+    print(a,b,c)
+    print(poss)
+    print(keys)
+
+printTest(1,2,3,4,5,foo=1,pp =2) 
+
