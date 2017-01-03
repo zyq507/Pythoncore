@@ -1,3 +1,4 @@
+#函数的参数处理很是重要
 #文档化函数
 def fibs(num):
     'This is a fib function~'#函数注释
@@ -49,3 +50,32 @@ def printTest(a,b,c=2, *poss,**keys):#**收集关键字参数，*收集位置参
 
 printTest(1,2,3,4,5,foo=1,pp =2) 
 
+def Story(**paras):
+    print('My name is %(name)s, I\'m %(age)s old.' %paras)
+    #   %()s 这种写法一定要搞清楚
+
+Story(name = 'ZYQ',age = '21')#关键字参数一定记得写上关键字
+
+def ppp(x,y,*other):#*other将会返回一个元组
+    print('This is'+str(other))
+    return x + y
+
+ppp(1,2,'Hello World!','ZYQ')#其他参数将会返回到元组之中
+
+def Interval(start,stop = None,step = 1):
+    'Imitate range() for step >0'
+    if stop is None:#is是同一性运算符
+        start, stop = 0, start
+    result = []
+    i = start
+    while i < stop:
+        result.append(i)
+        i += step
+    return result
+
+print(Interval(5))
+print(Interval(2,10))
+print(Interval(2,8,2))
+print(Interval(3,8))
+print(ppp(*Interval(3,7)))#必须使用*使变量作为剩余参数。
+        
