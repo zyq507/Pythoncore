@@ -79,3 +79,34 @@ print(Interval(2,8,2))
 print(Interval(3,8))
 print(ppp(*Interval(3,7)))#必须使用*使变量作为剩余参数。
         
+#递归方法
+#1、阶乘
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n*factorial(n-1)#递归调用的方法
+
+print(factorial(5))
+#二分法查找(序列已经排序完成)
+def search(sequence, number, lower=0, upper=None):
+    if upper is None: upper = len(sequence)-1
+    if lower == upper:
+        assert number == sequence[lower]#保证所查找的数字一定会被找到
+        return lower
+    else:
+        middle = (lower + upper)//2
+        if number > sequence[middle]:
+            return search(sequence, number, middle+1, upper)
+        else:
+            return search(sequence, number, lower, middle)
+
+seq = [34 ,67,8,123,4,100,95]
+seq.sort()
+#bisect模块非常好用
+print(search(seq,34))
+print(search(seq,100))
+import bisect
+print(bisect.bisect(seq,34))
+#map函数返回函数作用下的值str作用下的range(10)
+print(list(map(str,range(10))))
